@@ -42,3 +42,9 @@ for idx,folder in enumerate(train_labels):
         print(tf_test_y[g_cnt]," | ",tf_test_y_pred[g_cnt])
         g_cnt+=1
 
+
+tf_test_y_pred = np.array(tf_test_y_pred)
+tf_test_y = np.array(tf_test_y)
+np.save("tensor_labels",tf_test_y)
+np.save("tensor_pred",tf_test_y_pred)
+np.save("tensor_training_labels",np.array(train_labels))
