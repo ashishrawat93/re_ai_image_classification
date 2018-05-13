@@ -12,7 +12,7 @@ import os
 import h5py
 
 # fixed-sizes for image
-fixed_size = tuple((255, 2550))
+fixed_size = tuple((255, 255))
 
 # path to training data
 train_path = "dataset/train"
