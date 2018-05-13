@@ -10,11 +10,10 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.datasets import mnist
 
-np.random.seed(0)
-random.seed(0)
+
 # (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 dir='/Users/ashishrawat/Desktop/flower17_2/'
-fixed_size = (100,100)
+fixed_size = (255,255)
 file = '/Users/ashishrawat/Desktop/flower17_2/bluebell/image_1.jpg'
 images_per_class = 80
 input_layer_size = fixed_size[0]*fixed_size[1]
@@ -107,80 +106,23 @@ labels = np.asarray(labels)
 image_data = image_data.astype('float32')
 labels = labels.astype('float32')
 image_data /= 255
-# labels_one_hot = to_categorical(labels)
-# labels_one_hot = labels_one_hot[:, 1:]
-# all_labels = len(set(labels))
-# print(len(all_labels))
+
 num_of_classes = len(set(labels))
-print()
-print(num_of_classes)
-# exit(0)
-
-# print(labels_one_hot[70:90])
 
 
-# exit(0)
 
 shuffleidx = np.random.permutation(image_data.shape[0])
 shuffled_data = image_data[shuffleidx]
 shuffled_labels = labels[shuffleidx]
 shuffled_labels = to_categorical(shuffled_labels)
-# print(shuffled_labels.shape)
-# exit(0)
-'''
-shuffled_data = image_data
-shuffled_labels = labels_one_hot
-'''
-train_data = shuffled_data[:1355]
-train_labels = shuffled_labels[:1355]
-test_data = shuffled_data[1355:]
-test_labels = shuffled_labels[1355:]
-#
-# train_data = shuffled_data[:130]
-# train_labels = shuffled_labels[:130]
-# test_data = shuffled_data[130:]
-# test_labels = shuffled_labels[130:]
-# train_labels = to_categorical(train_labels)
-# test_labels = to_categorical(test_labels)
-# print(train_labels.shape)
-# print(test_labels.shape)
-# exit(0)
 
 
-print(train_data.shape, train_labels.shape, test_data.shape, test_labels.shape)
-# exit(0)
 
-
-# mnist data
-'''
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 classes = np.unique(train_labels)
 nClasses = len(classes)
 dimData = np.prod(train_images.shape[1:])
-print(dimData)
 
-train_data = train_images.reshape(train_images.shape[0], dimData)
-test_data = test_images.reshape(test_images.shape[0], dimData)
-train_data = train_data.astype('float32')
-test_data = test_data.astype('float32')
-train_data /= 255
-test_data /= 255
-train_labels_one_hot = to_categorical(train_labels)
-test_labels_one_hot = to_categorical(test_labels)
-
-
-
-model = Sequential()
-model.add(Dense(512, activation='relu', input_shape=(dimData,)))
-model.add(Dense(512, activation='relu'))
-model.add(Dense(nClasses, activation='softmax'))
-
-model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
-history = model.fit(train_data, train_labels_one_hot, batch_size=256, epochs=20, verbose=1,
-                   validation_data=(test_data, test_labels_one_hot))
-# mnist data end here
-'''
-# exit(0)
 
 # model = Sequential()
 # model.add(Dense(512, activation='relu', input_shape=(input_layer_size,)))
