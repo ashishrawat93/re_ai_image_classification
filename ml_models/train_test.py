@@ -90,6 +90,15 @@ print("Test labels : {}".format(testLabelsGlobal.shape))
 import warnings
 warnings.filterwarnings('ignore')
 
+
+
+def metrics(model, testDataGlobal, testLabelsGlobal, kfold):
+    
+    y_pred = cross_val_predict(model,testDataGlobal,testLabelsGlobal,cv=kfold)
+    conf_mat = confusion_matrix(testLabelsGlobal,y_pred)
+    print(conf_mat)
+    print(classification_report(testLabelsGlobal,y_pred))
+
 # 10-fold cross validation
 for name, model in models:
     kfold = KFold(n_splits=10, random_state=7)
@@ -112,21 +121,9 @@ for name, model in models:
     acc = 1.0*count/len(predict)
     print(name, "Accuracy :", str(acc))
     
-#    predict = model.predict(trainDataGlobal)
-#    count = 0
+    metrics(model, testDataGlobal, testLabelsGlobal, kfold)
     
-#    for idx, pred in enumerate(predict):
-#        if pred == trainLabelsGlobal[idx]:
-#            count+=1
-#    acc = 1.0*count/len(predict)
-#    
-    
-#    print(name,"testAcc: ",str(acc))
-    
-    y_pred = cross_val_predict(model,testDataGlobal,testLabelsGlobal,cv=kfold)
-    conf_mat = confusion_matrix(testLabelsGlobal,y_pred)
-    print(conf_mat)
-    print(classification_report(testLabelsGlobal,y_pred))
+   
     
 
 # boxplot algorithm comparison
@@ -155,7 +152,7 @@ clf.fit(np.array(global_features), np.array(global_labels))
 test_path = "dataset/test"
 my_test_path = 'dataset/global_data/test'
 # loop through the test images
-"""
+
 for file in glob.glob(test_path + "/*.jpg"):
     # read the image
     image = cv2.imread(file)
@@ -184,7 +181,7 @@ for file in glob.glob(test_path + "/*.jpg"):
     # display the output image
     plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     plt.show()
-"""
+
 #attempt at confusion matrix
 ctr = 0
 for idx, sample in enumerate(testDataGlobal):

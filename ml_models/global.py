@@ -12,19 +12,19 @@ import os
 import h5py
 
 # fixed-sizes for image
-fixed_size = tuple((500, 500))
+fixed_size = tuple((255, 2550))
 
 # path to training data
 train_path = "dataset/train"
 
 # no.of.trees for Random Forests
-num_trees = 100
+num_trees = 50
 
 # bins for histogram
 bins = 8
 
 # train_test_split size
-test_size = 0.30
+test_size = 0.20
 
 # seed for reproducing same results
 seed = 9
