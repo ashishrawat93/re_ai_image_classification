@@ -11,9 +11,7 @@ y = np.load("random_tensor_labels.npy")
 
 m = abs(y_hat-y)
 m[m!=0] = 1
-print((y.shape - m.sum())/y.shape)
-
-print(y_hat.shape,y.shape)
+print("Accuracy is : "(y.shape - m.sum())/y.shape)
 
 #y_pred = cross_val_predict(model,trainDataGlobal,trainLabelsGlobal,cv=kfold)
 conf_mat = confusion_matrix(y,y_hat)
