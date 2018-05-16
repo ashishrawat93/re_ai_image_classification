@@ -1,9 +1,6 @@
 import numpy as np
 
 from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import train_test_split, cross_val_score, cross_val_predict
-from sklearn.model_selection import KFold, StratifiedKFold
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 
 
 y_hat = np.load("random_tensor_pred.npy")
