@@ -92,16 +92,10 @@ for training_name in train_labels:
         image = cv2.resize(image, fixed_size)
 #        print(image.shape)
        
-        ####################################
-        # Global Feature extraction
-        ####################################
         fv_hu_moments = fd_hu_moments(image)
         fv_haralick   = fd_haralick(image)
         fv_histogram  = fd_histogram(image)
 
-        ###################################
-        # Concatenate global features
-        ###################################
         global_feature = np.hstack([fv_histogram, fv_haralick, fv_hu_moments])
 
         # update the list of labels and feature vectors

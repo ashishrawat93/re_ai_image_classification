@@ -134,9 +134,6 @@ pyplot.boxplot(results)
 ax.set_xticklabels(names)
 pyplot.show()
 
-#-----------------------------------
-# TESTING OUR MODEL
-#-----------------------------------
 
 # to visualize results
 import matplotlib.pyplot as plt

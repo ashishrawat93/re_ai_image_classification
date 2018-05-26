@@ -11,7 +11,7 @@ from keras.layers import Dense
 from keras.datasets import mnist
 
 
-# (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+
 dir='/Users/ashishrawat/Desktop/flower17_2/'
 fixed_size = (255,255)
 file = '/Users/ashishrawat/Desktop/flower17_2/bluebell/image_1.jpg'
